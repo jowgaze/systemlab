@@ -3,6 +3,7 @@
 API para cadastrar laboratórios de universidade e seus bolsistas, e através de sessões informar quais ambientes estão disponiveis para uso.
 
 ## Diagrama de Classes (Domínio da API)
+
 ```mermaid
 classDiagram
     User --|> Supervisor
@@ -37,7 +38,7 @@ classDiagram
         -Laboratory laboratory
         -Supervisor supervisor
     }
-´´´
+```
 
 ## Execução local com Postgresql
 
