@@ -1,6 +1,8 @@
 # Controle de disponibilidade de laboratórios
 
-API para cadastrar laboratórios de universidade e seus bolsistas, e através de sessões informar quais ambientes estão disponiveis para uso.
+API para cadastrar laboratórios de universidade e seus bolsistas, e através de sessões informar quais ambientes estão disponíveis para uso.
+
+Back-end para o projeto pessoal [Systemlab-Frontend](https://github.com/jowgaze/systemlab-frontend)
 
 ## Diagrama de Classes (Domínio da API)
 
