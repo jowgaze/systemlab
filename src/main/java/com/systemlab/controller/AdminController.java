@@ -46,6 +46,24 @@ public class AdminController {
             return ResponseEntity.badRequest().build();
     }
 
+    @PutMapping("/users/disableSupervisor/{username}")
+    public ResponseEntity<SupervisorResponseDTO> disableSupervisor(@PathVariable String username) {
+        SupervisorResponseDTO response = supervisorService.disableSupervisor(username);
+        if (response != null)
+            return ResponseEntity.ok(response);
+        else
+            return ResponseEntity.badRequest().build();
+    }
+
+    @PutMapping("/users/requestReactivateSupervisor/{registration}")
+    public ResponseEntity<SupervisorResponseDTO> requestReactivateSupervisor(@PathVariable String registration) {
+        SupervisorResponseDTO response = supervisorService.requestReactivate(registration);
+        if (response != null)
+            return ResponseEntity.ok(response);
+        else
+            return ResponseEntity.badRequest().build();
+    }
+
     @GetMapping("/users/checked")
     public ResponseEntity<List<SupervisorResponseDTO>> listCheckedUsers() {
         List<SupervisorResponseDTO> list = this.supervisorService.filterSupervisorsByStatus(StatusUser.CHECKED);

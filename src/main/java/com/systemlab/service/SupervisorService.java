@@ -41,9 +41,35 @@ public class SupervisorService {
 
     public SupervisorResponseDTO activateSupervisor(String username) {
         Supervisor supervisor = supervisorRepository.findByUsername(username);
-        if (supervisor != null) {
+        if (supervisor != null && supervisor.getStatus() == StatusUser.UNCHECKED) {
             supervisor.setStatus(StatusUser.CHECKED);
             supervisor.setRole(Role.SUPERVISOR);
+            supervisorRepository.save(supervisor);
+
+            return this.getSupervisorResponse(supervisor);
+        }
+
+        return null;
+    }
+
+    public SupervisorResponseDTO disableSupervisor(String username) {
+        Supervisor supervisor = supervisorRepository.findByUsername(username);
+        if (supervisor != null && supervisor.getStatus() != StatusUser.DISABLED) {
+            supervisor.setStatus(StatusUser.DISABLED);
+            supervisor.setRole(null);
+            supervisorRepository.save(supervisor);
+
+            return this.getSupervisorResponse(supervisor);
+        }
+
+        return null;
+    }
+
+    public SupervisorResponseDTO requestReactivate(String registration) {
+        Supervisor supervisor = supervisorRepository.findByRegistration(registration);
+
+        if (supervisor != null && supervisor.getStatus() == StatusUser.DISABLED) {
+            supervisor.setStatus(StatusUser.UNCHECKED);
             supervisorRepository.save(supervisor);
 
             return this.getSupervisorResponse(supervisor);
