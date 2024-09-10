@@ -1,1 +1,1 @@
-INSERT INTO users(username, password, status, role) VALUES('admin','"$2a$10$RobN1Vh6xJzWiJFA2NWcmeN0mxnwV4ykq/1eDVXipDZTr1MQptuBW"','CHECKED','ADMIN')
+INSERT INTO users(username, password, status, role) VALUES('admin','$2a$10$RobN1Vh6xJzWiJFA2NWcmeN0mxnwV4ykq/1eDVXipDZTr1MQptuBW','CHECKED','ADMIN')
