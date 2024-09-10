@@ -46,4 +46,4 @@ Criar banco de dados e disponibilizar informações em `application.properties`.
 
 Visualize os endpoints em `http://localhost:8080/swagger-ui/index.html#/`
 
-Para requisições utilize o token gerado com o login de admin. No insomnia, na aba Auth da requesição, adicione um Bearer Token e preencha o com o token e "Bearer" em prefix.
+Para requisições utilize o token gerado com o login de admin. No Insomnia, na aba Auth da requisição, adicione um Bearer Token e preencha o com o token e "Bearer" em prefix.
