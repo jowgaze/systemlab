@@ -53,7 +53,7 @@ public class SessionService {
     public List<SessionResponseDTO> listSessionsbyLaboratory(Long laboratory_id) {
         List<SessionResponseDTO> listResponse = new ArrayList<>();
         List<Session> sessions = sessionRepository.findByLaboratory(laboratoryRepository.findById(laboratory_id)
-        .orElseThrow(() -> new IllegalArgumentException("Laboratory not found")));
+                .orElseThrow(() -> new IllegalArgumentException("Laboratory not found")));
 
         sessions.forEach(session -> {
             listResponse.add(this.getSessionResponse(session));
@@ -64,11 +64,11 @@ public class SessionService {
 
     public Boolean deleteSession(Long session_id) {
         Session session = this.sessionRepository.findById(session_id)
-        .orElseThrow(() -> new IllegalArgumentException("Session not found"));
-        
-        if(session.getStatus())
-        return false;
-        
+                .orElseThrow(() -> new IllegalArgumentException("Session not found"));
+
+        if (session.getStatus())
+            return false;
+
         this.sessionRepository.delete(session);
         return true;
     }
@@ -79,7 +79,7 @@ public class SessionService {
         Session session = sessionRepository.findBySupervisor(supervisorRepository.findById(supervisorId)
                 .orElseThrow(() -> new IllegalArgumentException("Supervisor not found")));
 
-        if(session != null)
+        if (session != null)
             session.setStatus(!session.getStatus());
         else
             return null;
@@ -95,6 +95,8 @@ public class SessionService {
                 session.getLaboratory().getId(),
                 session.getLaboratory().getName(),
                 session.getSupervisor().getId(),
-                session.getSupervisor().getName());
+                session.getSupervisor().getName(),
+                session.getSupervisor().getCourse()
+        );
     }
 }
