@@ -88,6 +88,10 @@ public class SupervisorService {
         return listResponse;
     }
 
+    public SupervisorResponseDTO getByToken(String username){
+        return this.getSupervisorResponse(supervisorRepository.findByUsername(username));
+    }
+
     private SupervisorResponseDTO getSupervisorResponse(Supervisor supervisor) {
         return new SupervisorResponseDTO(
                 supervisor.getId(),
