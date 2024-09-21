@@ -62,6 +62,14 @@ public class SessionService {
         return listResponse;
     }
 
+    public SessionResponseDTO listSessionBySupervisor(Long supervisor_id) {
+        Session session = this.sessionRepository.findBySupervisor(this.supervisorRepository
+                .findById(supervisor_id).orElseThrow(() -> new IllegalArgumentException("Supervisor not found")));
+
+
+        return this.getSessionResponse(session);
+    }
+
     public Boolean deleteSession(Long session_id) {
         Session session = this.sessionRepository.findById(session_id)
                 .orElseThrow(() -> new IllegalArgumentException("Session not found"));
@@ -96,7 +104,6 @@ public class SessionService {
                 session.getLaboratory().getName(),
                 session.getSupervisor().getId(),
                 session.getSupervisor().getName(),
-                session.getSupervisor().getCourse()
-        );
+                session.getSupervisor().getCourse());
     }
 }

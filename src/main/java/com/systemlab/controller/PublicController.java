@@ -23,8 +23,13 @@ public class PublicController {
         return ResponseEntity.ok(this.sessionService.listSessions());
     }
 
-    @GetMapping("/sessions/{laboratoryId}")
+    @GetMapping("/sessionsByLaboratory/{laboratoryId}")
     public ResponseEntity<List<SessionResponseDTO>> listSessionsByLaboratory(@PathVariable Long laboratoryId){
         return ResponseEntity.ok(this.sessionService.listSessionsbyLaboratory(laboratoryId));
+    }
+
+    @GetMapping("/sessionsBySupervisor/{supervisorId}")
+    public ResponseEntity<SessionResponseDTO> listSessionBySupervisor(@PathVariable Long supervisorId){
+        return ResponseEntity.ok(this.sessionService.listSessionBySupervisor(supervisorId));
     }
 }
